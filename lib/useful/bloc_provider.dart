@@ -8,9 +8,9 @@ abstract class BlocBase {
 
 class BlocProvider<T extends BlocBase> extends StatefulWidget {
   BlocProvider({
-    Key key,
-    @required this.child,
-    @required this.bloc,
+    Key? key,
+    required this.child,
+    required this.bloc,
   }) : super(key: key);
 
   final Widget child;
@@ -19,10 +19,10 @@ class BlocProvider<T extends BlocBase> extends StatefulWidget {
   @override
   _BlocProviderState<T> createState() => _BlocProviderState<T>();
 
-  static T of<T extends BlocBase>(BuildContext context) {
-    final _BlocProviderInherited<T> provider = context
+  static T? of<T extends BlocBase>(BuildContext context) {
+    final _BlocProviderInherited<T>? provider = context
         .getElementForInheritedWidgetOfExactType<_BlocProviderInherited<T>>()
-        ?.widget;
+        ?.widget as _BlocProviderInherited<T>?;
     return provider?.bloc;
   }
 }
@@ -45,9 +45,9 @@ class _BlocProviderState<T extends BlocBase> extends State<BlocProvider<T>> {
 
 class _BlocProviderInherited<T> extends InheritedWidget {
   _BlocProviderInherited({
-    Key key,
-    @required Widget child,
-    @required this.bloc,
+    Key? key,
+    required Widget child,
+    required this.bloc,
   }) : super(key: key, child: child);
 
   final T bloc;
