@@ -37,7 +37,7 @@ class _BlocProviderState<T extends BlocBase> extends State<BlocProvider<T>> {
   @override
   Widget build(BuildContext context) {
     return  _BlocProviderInherited<T>(
-      bloc: widget.bloc,
+      bloc: widget.bloc!,
       child: widget.child,
     );
   }
